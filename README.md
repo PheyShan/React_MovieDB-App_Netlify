@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Visit the deployed page here: ***
+Visit the deployed page here: moviedb-app-react.netlify.app
 
 # General Information
 The purpose of this project is to demonstrate my understanding of React Hooks, fetching data from open source movie API and adding movies to/removing from favourites. 
