@@ -7,26 +7,13 @@ body {
   font-family: 'Poppins', sans-serif;  /*CSS rules to specify families*/
 }
 
-.movie-app {
-  /* border: 1px solid rgb(21, 255, 0); */
-}
-
 .movie-list-scroll {
   overflow-x: auto;
-}
-
-.search-form {
-  /* border: 1px solid rgb(255, 0, 0); */
-}
-
-.heading {
-  /* border: 1px solid rgb(255, 0, 0); */
 }
 
 .image-container {
   position: relative;
   transition: transform 0.5s;
-  /* border: 1px solid rgb(255, 0, 0); */
 }
 
 .image-container:hover {
@@ -44,7 +31,6 @@ body {
   font-size: 20px;
   padding: 20px;
   text-align: center;     
-  /* border: 1px solid rgb(0, 255, 149); */
 }
 
 .image-container:hover .overlay {
@@ -52,7 +38,20 @@ body {
 }
 
 .link:hover {    
-    border-bottom: 1px solid #cd394c;
+    text-decoration: underline solid #cd394c 1px; 
+    color: #cd394c;
     transition: 250ms;
-    padding-bottom: 0;
+}
+
+.TMDBlogo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;  
+}
+
+.TMDBlogo {
+  height: 20px;
+  width: auto;
+  margin-bottom: 5px;
 }

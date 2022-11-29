@@ -8,9 +8,10 @@ import SearchBox from './components/SearchBox';
 import AddFavourite from './components/AddFavourite';
 import RemoveFavourite from './components/RemoveFavourite';
 import MovieNavBar from './components/MovieNavBar';
+import TMDBlogo from './assets/TMDBlogo.svg';
 
 // const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=550460fc70fbc94efd837a66c7e2ee39";
-const API_key = "&api_key=355cc7c07b23b6a880f3659fd0bf9b8e";
+const API_key = "&api_key=f6b2ad18ded43b8a1878c850bf05c4c3";
 const base_url = "https://api.themoviedb.org/3";
 let url = base_url + "/movie/popular?" + API_key;
 const arr = ["Trending", "Theatre", "Kids", "Drama"];
@@ -36,7 +37,7 @@ const App = () => {
   const searchForMovie = async (e) => {
     e.preventDefault();
     try {
-      const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=355cc7c07b23b6a880f3659fd0bf9b8e&query=${searchValue}`;
+      const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=f6b2ad18ded43b8a1878c850bf05c4c3&query=${searchValue}`;
       fetch(searchUrl)
         .then((response) => response.json())
         .then(data => {
@@ -44,7 +45,7 @@ const App = () => {
           setMovies(data.results)
         });
       //OR
-      // const url = `https://api.themoviedb.org/3/search/movie?api_key=550460fc70fbc94efd837a66c7e2ee39&query=${searchValue}`;
+      // const url = `https://api.themoviedb.org/3/search/movie?api_key=355cc7c07b23b6a880f3659fd0bf9b8e&query=${searchValue}`;
       // const response = await fetch(url);
       // const data = await response.json();
       // console.log("Searching", data);
@@ -56,10 +57,18 @@ const App = () => {
   };
 
   //retrieve saved items from local storage 
+  // useEffect(() => {
+  //   const movieFavourites = JSON.parse(localStorage.getItem('movie-app-favourites')); //convert JSON to JavaScript
+  //   setFavourites(movieFavourites);
+  // }, []);
   useEffect(() => {
-    const movieFavourites = JSON.parse(localStorage.getItem('movie-app-favourites')); //convert JSON to JavaScript
-    setFavourites(movieFavourites);
+    let movieFav = localStorage.getItem('movie-app-favourites');
+    if (movieFav) {
+      const movieFavourites = JSON.parse(movieFav); //convert JSON to JavaScript
+      setFavourites(movieFavourites);
+    }
   }, []);
+
 
   //save items to local storage
   const saveToLocalStorage = (items) => {
@@ -141,6 +150,16 @@ const App = () => {
               AddRemoveFavourite={RemoveFavourite}
               handleFavouriteClick={removeFavouriteMovie}
             />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="TMDBlogo-container">
+            <img
+              className="TMDBlogo"
+              src={TMDBlogo}
+              alt="TMDB logo"
+            />
+            <p>This product uses the TMDB API but is not endorsed or certified by TMDB</p>
           </Col>
         </Row>
       </Container>
